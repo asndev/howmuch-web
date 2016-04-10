@@ -1,54 +1,46 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { fetchEntity } from '../actions';
 
-import Title from 'components/Title';
+import Container from 'muicss/lib/react/container';
+import TopToolbar from 'components/Navigation/TopToolbar';
+import LoginForm from 'components/LoginForm';
 
 class App extends Component {
-  onButtonClick() {
-    this.props.dispatch(fetchEntity());
+
+  constructor(props) {
+    super(props);
   }
 
   render() {
-    const { receivedAt } = this.props;
+    const { user } = this.props.settings;
+    let content;
+    if (user) {
+      content = this.props.children;
+    } else {
+      content = <LoginForm dispatch={this.props.dispatch} />;
+    }
     return (
       <div>
-          <ul>
-            <li><Link to={'/'}>Home</Link></li>
-            <li><Link to={'/foobarbaz'}>FooBarBaz</Link></li>
-          </ul>
-          <Title value={'Foobar'} />
-          <button onClick={this.onButtonClick.bind(this)}>
-            Click.
-          </button>
-          Last Timestamp:
-          {receivedAt &&
-              <span>
-                Last updated at {new Date(receivedAt).toLocaleTimeString()}.
-              </span>
-          }
-          <br/>
-          <div>
-            {this.props.children}
-          </div>
+          <TopToolbar />
+          <Container fluid={true}>
+            {content}
+         </Container>
       </div>
     );
   }
 }
 
 App.propTypes = {
-  receivedAt: PropTypes.number,
   children: PropTypes.object,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  settings: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-  const { entities } = state;
-  const { receivedAt } = entities;
+  const { settings } = state;
 
   return {
-    receivedAt
+    settings
   };
 }
 

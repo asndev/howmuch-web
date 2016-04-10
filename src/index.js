@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, hashHistory } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 
@@ -12,10 +12,17 @@ import 'stylesheets/_base.scss';
 const store = configureStore();
 const rootEl = document.getElementById('root');
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// Needed for onTouchTap
+// Can go away when react 1.0 release
+// Check this repo:
+// https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin();
+
 let render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={hashHistory} routes={routes} />
+      <Router history={browserHistory} routes={routes} />
     </Provider>,
     rootEl
   );

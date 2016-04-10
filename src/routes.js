@@ -3,11 +3,11 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from 'containers/App';
 import Index from 'components/Index';
-import FooBarBaz from 'components/FooBarBaz';
+import ActivityList from 'components/ActivityList';
 
 export default (
   <Route path='/' component={App}>
     <IndexRoute component={Index} />
-    <Route path='foobarbaz' component={FooBarBaz} />
+    <Route path='/activitylist/:listid' component={ActivityList} />
   </Route>
 );
