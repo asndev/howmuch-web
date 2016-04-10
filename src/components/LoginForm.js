@@ -11,8 +11,8 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: null,
-      password: null
+      email: '',
+      password: ''
     };
   }
 
@@ -25,6 +25,7 @@ class LoginForm extends React.Component {
   }
 
   doLogin(e) {
+    e.preventDefault();
     const { email, password } = this.state;
     if (email && password) {
       this.props.dispatch(doLogin(email, password));
@@ -52,7 +53,7 @@ class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes = {
-  dispath: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired
 };
 
 export default LoginForm;

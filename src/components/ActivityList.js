@@ -2,6 +2,7 @@ import React from 'react';
 import ActivityDayList from 'components/ActivityDayList';
 
 import Panel from 'muicss/lib/react/panel';
+import Divider from 'muicss/lib/react/divider';
 
 const ActivityList = (props) => {
   const { activities } = props;
@@ -18,6 +19,7 @@ const ActivityList = (props) => {
             <h3>{monthKey}
               <span className="mui--pull-right">{month.count}</span>
             </h3>
+            <Divider/>
           <ActivityDayList days={month.data} />
           </div>
         )

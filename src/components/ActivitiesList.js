@@ -7,9 +7,9 @@ const ActivitiesList = (props) => {
       Object.keys(activities).map(activityKey => {
       let activity = activities[activityKey];
       return (
-        <h5 style={{ paddingLeft: 60 }} key={activityKey}>
+        <div style={{ padding: 16, paddingLeft: 60 }} key={activityKey}>
           {new Date(activity.timestamp).toUTCString()}
-        </h5>
+        </div>
       );
     })
   }

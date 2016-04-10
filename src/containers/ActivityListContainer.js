@@ -18,6 +18,9 @@ class ActivityListContainer extends React.Component {
         this.props.activitylists.activities[this.props.params.listid] || {};
       return (
         <div>
+          <div>Average per Day: XX</div>
+          <div>Average per Week: YY</div>
+          <div>Average per Month: ZZ</div>
           <ActivityList activities={activities} />
         </div>
       );

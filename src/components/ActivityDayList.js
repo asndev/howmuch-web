@@ -9,7 +9,7 @@ const ActivityDayList = (props) => {
       let day = days[dayKey];
       return (
         <div key={dayKey}>
-          <h4 style={{ paddingLeft: 30 }}>{dayKey}
+          <h4 style={{ padding: 16, paddingLeft: 30 }}>{dayKey}
             <span className="mui--pull-right">{day.count}</span>
           </h4>
           <ActivitiesList activities={day.data} />

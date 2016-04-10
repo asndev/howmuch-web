@@ -23,7 +23,7 @@ const settingsInitialState = {
 };
 const testState = {
   user: {
-    token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1NzA2YmU0YWVkZTg1OTViMDAyYmEzMWMiLCJpYXQiOjE0NjAyMDkxOTk5MzEsImV4cCI6MTQ2MDI5NTU5OTkzMX0.TErHn4vkIsdm2Xo3G9GaqY23jeWP6wJZgumks2bKm30"
+    token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1NzA2YmU0YWVkZTg1OTViMDAyYmEzMWMiLCJpYXQiOjE0NjAzMTU1ODM4MDAsImV4cCI6MTQ2MDQwMTk4MzgwMX0.1gi59XN3MbMja8j9ok83cxAHeO-1LwiaOH81j_mOdJ8"
   }
 };
 function settings(state = testState, action) {

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Container from 'muicss/lib/react/container';
 import TopToolbar from 'components/Navigation/TopToolbar';
 import LoginForm from 'components/LoginForm';
+import Panel from 'muicss/lib/react/panel';
 
 class App extends Component {
 
@@ -21,10 +22,12 @@ class App extends Component {
     }
     return (
       <div>
-          <TopToolbar />
-          <Container fluid={true}>
+        <TopToolbar />
+        <Container fluid={true}>
+          <Panel style={{ marginTop: 20, minHeight: '85vh' }}>
             {content}
-         </Container>
+          </Panel>
+       </Container>
       </div>
     );
   }
