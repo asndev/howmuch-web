@@ -45,7 +45,9 @@ function settings(state = testState, action) {
 
 
 function activitylists(state ={ data: [], activities: {}}, action) {
-  let newActivities = Object.assign({}, state.activities);
+  let newActivities = {
+    ...state.activities
+  };
   switch (action.type) {
     case RECEIVE_ATIVITY_LISTS:
       return {
@@ -53,10 +55,10 @@ function activitylists(state ={ data: [], activities: {}}, action) {
         data: action.payload.data
       };
     case RECEIVE_ACTIVITIES:
-      newActivities[action.payload.data._id] = action.payload.data;
+      newActivities[action.payload._id] = action.payload.data;
       return {
         ...state,
-        activities: Object.assign({}, state, newActivities)
+        activities: Object.assign({}, state.activities, newActivities)
       };
     default:
       return state;

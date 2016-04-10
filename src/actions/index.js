@@ -23,13 +23,13 @@ export function fetchActivityList(id) {
       console.warn('No User');
       return;
     }
-    return fetch('http://howmuch-api.herokuapp.com/v1/activitylist/' + id, {
+    return fetch(`http://howmuch-api.herokuapp.com/v1/activitylist/${id}/activity`, {
       headers: {
         'authorization': user.token
       }
     })
     .then(response => response.json())
-    .then(json => dispatch(receiveActivities(json)));
+    .then(json => dispatch(receiveActivities({ _id: id, ...json })));
   };
 }
 

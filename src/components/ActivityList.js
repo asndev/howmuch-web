@@ -15,15 +15,40 @@ class ActivityList extends React.Component {
     render() {
       const activity =
         this.props.activitylists.activities[this.props.params.listid] || {};
+        console.log(activity);
       return (
         <div>
-          {/*<h2>{activity.name}</h2>
-          <h3>{this.props.params.listid}</h3>
           {
-            activity.data && activity.data.map(e => {
-              return <div key={e._id}>{e.timestamp}</div>;
+            Object.keys(activity).map(key => {
+              let m = activity[key];
+              return (
+                <div>
+                  <h3>{key} ({m.count})</h3>
+                  <div>
+                    {
+                      Object.keys(activity[key].data).map(k => {
+                        let d = activity[key].data[k];
+                        return (
+                          <div>
+                            <h4>{k} ({d.count})</h4>
+                              {
+                                Object.keys(d.data).map(a => {
+                                  return (
+                                    <h5>
+                                      {new Date(d.data[a].timestamp).toUTCString()}
+                                    </h5>
+                                  );
+                                })
+                              }
+                          </div>
+                        );
+                      })
+                    }
+                  </div>
+                </div>
+              );
             })
-          }*/}
+          }
         </div>
       );
     }
