@@ -14,12 +14,8 @@ class App extends Component {
 
   render() {
     const { user } = this.props.settings;
-    let content;
-    if (user) {
-      content = this.props.children;
-    } else {
-      content = <LoginForm dispatch={this.props.dispatch} />;
-    }
+    const content = user ? this.props.children : <LoginForm dispatch={this.props.dispatch} />;
+
     return (
       <div>
         <TopToolbar />
