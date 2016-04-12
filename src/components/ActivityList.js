@@ -14,15 +14,13 @@ const ActivityList = (props) => {
     {
       Object.keys(activities).map(monthKey => {
         let month = activities[monthKey];
-        return (
-          <div key={monthKey}>
-            <h3>{monthKey}
-              <span className="mui--pull-right">{month.count}</span>
-            </h3>
-            <Divider/>
+        return (<div key={monthKey}>
+          <h3>{monthKey}
+            <span className="mui--pull-right">{month.count}</span>
+          </h3>
+          <Divider/>
           <ActivityDayList days={month.data} />
-          </div>
-        )
+        </div>);
       })
     }
   </div>;
