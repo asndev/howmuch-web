@@ -19,6 +19,7 @@ function entities(state = {}, action) {
 }
 
 const settingsInitialState = {
+  // The user is set via the Reducer after a successful login
   user: null
 };
 const testState = {
