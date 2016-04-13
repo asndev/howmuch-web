@@ -1,4 +1,6 @@
 import React from 'react';
+import Section from 'components/Section/Section';
+
 import ActivitiesList from 'components/ActivitiesList.js';
 
 const ActivityDayList = (props) => {
@@ -6,16 +8,14 @@ const ActivityDayList = (props) => {
   return (<div>
     {
       Object.keys(days).map(dayKey => {
-      let day = days[dayKey];
-      return (
-        <div key={dayKey}>
-          <h4 style={{ padding: 16, paddingLeft: 30 }}>{dayKey}
-            <span className="mui--pull-right">{day.count}</span>
-          </h4>
-          <ActivitiesList activities={day.data} />
-        </div>
-      );
-    })
+        const day = days[dayKey];
+        const count = <span className="mui--pull-right">{day.count}</span>;
+        return (<div key={dayKey}>
+          <Section title={dayKey}>
+            <ActivitiesList activities={day.data} />
+          </Section>
+        </div>);
+      })
   }
   </div>)
 };

@@ -20,7 +20,11 @@ class App extends Component {
       <div>
         <TopToolbar />
         <Container fluid={true}>
-          <Panel style={{ marginTop: 20, minHeight: '85vh' }}>
+          <Panel style={{
+              margin: 'auto',
+              marginTop: 20,
+              minHeight: '85vh',
+              maxWidth: 500 }}>
             {content}
           </Panel>
        </Container>

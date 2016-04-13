@@ -16,12 +16,14 @@ class ActivityListContainer extends React.Component {
     render() {
       const activities =
         this.props.activitylists.activities[this.props.params.listid] || {};
+      if (!activities && !activities.details) {
+          return <h3>Loading ...</h3>;
+      }
       return (
         <div>
-          <div>Average per Day: XX</div>
-          <div>Average per Week: YY</div>
-          <div>Average per Month: ZZ</div>
-          <ActivityList activities={activities} />
+          <div>Activities: {activities.details.activityCount}</div>
+          <div>Average per Day: {activities.details.averagePerDay}</div>
+          <ActivityList activities={activities.data} />
         </div>
       );
     }

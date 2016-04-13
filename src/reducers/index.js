@@ -7,6 +7,8 @@ import {
   RECEIVE_ACTIVITIES
 } from '../actions';
 
+// TODO dont do all in 1 file :D
+
 function entities(state = {}, action) {
   switch (action.type) {
     case SOME_ACTION:
@@ -24,7 +26,7 @@ const settingsInitialState = {
 };
 const testState = {
   user: {
-    token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1NzA2YmU0YWVkZTg1OTViMDAyYmEzMWMiLCJpYXQiOjE0NjAzMTU1ODM4MDAsImV4cCI6MTQ2MDQwMTk4MzgwMX0.1gi59XN3MbMja8j9ok83cxAHeO-1LwiaOH81j_mOdJ8"
+    token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1NzA2YmU0YWVkZTg1OTViMDAyYmEzMWMiLCJpYXQiOjE0NjA1NzM4MDI3OTYsImV4cCI6MTQ2MDY2MDIwMjc5Nn0.KGejQJ45vyt4mvkudJok_JeSG2xMkIT4G-7hxmI1GRY"
   }
 };
 function settings(state = testState, action) {
@@ -51,12 +53,16 @@ function activitylists(state ={ data: [], activities: {}}, action) {
   };
   switch (action.type) {
     case RECEIVE_ATIVITY_LISTS:
+      // TODO (asn) we also have to do a hashmap here.
       return {
         ...state,
         data: action.payload.data
       };
     case RECEIVE_ACTIVITIES:
-      newActivities[action.payload._id] = action.payload.data;
+      newActivities[action.payload._id] = {
+        data: action.payload.data,
+        details: action.payload.details
+      };
       return {
         ...state,
         activities: Object.assign({}, state.activities, newActivities)

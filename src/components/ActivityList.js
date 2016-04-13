@@ -7,7 +7,6 @@ import Divider from 'muicss/lib/react/divider';
 const ActivityList = (props) => {
   const { activities } = props;
   if (!activities) {
-    console.log('No Activities', props);
     return <h4>Loading...</h4>;
   }
   return <div>
