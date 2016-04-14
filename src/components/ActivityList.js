@@ -9,7 +9,7 @@ const ActivityList = (props) => {
   if (!activities) {
     return <h4>Loading...</h4>;
   }
-  return <div>
+  return (<div>
     {
       Object.keys(activities).map(monthKey => {
         let month = activities[monthKey];
@@ -22,7 +22,11 @@ const ActivityList = (props) => {
         </div>);
       })
     }
-  </div>;
+  </div>);
+};
+
+ActivityList.propTypes = {
+  activities: React.PropTypes.object.isRequired
 };
 
 export default ActivityList;

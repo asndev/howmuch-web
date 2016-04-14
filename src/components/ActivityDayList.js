@@ -9,15 +9,18 @@ const ActivityDayList = (props) => {
     {
       Object.keys(days).map(dayKey => {
         const day = days[dayKey];
-        const count = <span className="mui--pull-right">{day.count}</span>;
         return (<div key={dayKey}>
-          <Section title={dayKey}>
+          <Section title={'(' + day.count + ') ' + dayKey}>
             <ActivitiesList activities={day.data} />
           </Section>
         </div>);
       })
   }
-  </div>)
+  </div>);
+};
+
+ActivityDayList.propTypes = {
+  days: React.PropTypes.object.isRequired
 };
 
 export default ActivityDayList;

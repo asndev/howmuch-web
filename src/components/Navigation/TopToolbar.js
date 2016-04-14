@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-
+import styles from './TopToolbar.scss';
 import Appbar from 'muicss/lib/react/appbar';
 
 const TopToolbar = (props) => (
@@ -8,7 +8,7 @@ const TopToolbar = (props) => (
     <table width="100%">
       <tbody>
        <tr style={{verticalAlign: 'middle'}}>
-         <td className="mui--appbar-height">HOWMUCH</td>
+         <td className={styles.title + ' mui--appbar-height'}>HOWMUCH</td>
        </tr>
       </tbody>
     </table>

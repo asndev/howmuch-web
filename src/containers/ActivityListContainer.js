@@ -16,7 +16,7 @@ class ActivityListContainer extends React.Component {
     render() {
       const activities =
         this.props.activitylists.activities[this.props.params.listid] || {};
-      if (!activities && !activities.details) {
+      if (!activities || !activities.details) {
           return <h3>Loading ...</h3>;
       }
       return (
