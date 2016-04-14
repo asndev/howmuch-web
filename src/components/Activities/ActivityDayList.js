@@ -1,7 +1,7 @@
 import React from 'react';
 import Section from 'components/Section/Section';
 
-import ActivitiesList from 'components/ActivitiesList.js';
+import ActivitiesList from 'components/Activities/ActivitiesList.js';
 
 const ActivityDayList = (props) => {
   const { days } = props;

@@ -3,14 +3,18 @@ import { connect } from 'react-redux';
 import { Router } from 'react-router';
 import { browserHistory } from 'react-router';
 
-import { fetchActivityList } from '../actions';
+import { fetchActivityList, createActivity } from '../actions';
 import Button from 'muicss/lib/react/button';
-import ActivityList from 'components/ActivityList';
+import ActivityList from 'components/Activities/ActivityList';
 
 class ActivityListContainer extends React.Component {
 
     componentWillMount() {
       this.props.dispatch(fetchActivityList(this.props.params.listid));
+    }
+
+    createActivity() {
+      this.props.dispatch(createActivity(this.props.params.listid));
     }
 
     render() {
@@ -21,8 +25,20 @@ class ActivityListContainer extends React.Component {
       }
       return (
         <div>
-          <div>Activities: {activities.details.activityCount}</div>
-          <div>Average per Day: {activities.details.averagePerDay}</div>
+          <div style={{ margin: 'auto', width: '60%', paddingBottom: 25 }}>
+            <Button
+              onClick={this.createActivity.bind(this)}
+              variant="raised"
+              color="danger">
+              Create Activity
+            </Button>
+          </div>
+          <div>Activities<br/>
+            <strong>{activities.details.activityCount}</strong>
+          </div>
+          <div>Average<br/>
+            <strong>{activities.details.averagePerDay}</strong>
+          </div>
           <ActivityList activities={activities.data} />
         </div>
       );

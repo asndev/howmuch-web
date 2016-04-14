@@ -1,5 +1,5 @@
 import React from 'react';
-import ActivityDayList from 'components/ActivityDayList';
+import ActivityDayList from 'components/Activities/ActivityDayList';
 
 import Panel from 'muicss/lib/react/panel';
 import Divider from 'muicss/lib/react/divider';

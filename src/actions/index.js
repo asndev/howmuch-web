@@ -6,6 +6,7 @@ export const SOME_ACTION = 'SOME_ACTION';
 export const DO_LOGIN = 'DO_LOGIN';
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN';
 
+export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
 export const RECEIVE_ATIVITY_LISTS = 'RECEIVE_ATIVITY_LISTS';
 export const RECEIVE_ACTIVITIES = 'RECEIVE_ACTIVITIES';
 
@@ -30,6 +31,24 @@ export function fetchActivityList(id) {
     })
     .then(response => response.json())
     .then(json => dispatch(receiveActivities({ _id: id, ...json })));
+  };
+}
+
+export function createActivity(id) {
+  return (dispatch, getState) => {
+    const user = getState().settings.user;
+    if (!user) {
+      console.warn('No User');
+      return;
+    }
+
+    return fetch(`http://howmuch-api.herokuapp.com/v1/activitylist/${id}/activity`, {
+      headers: {
+        'authorization': user.token
+      },
+      method: 'POST'
+    })
+    .then(() => { dispatch(fetchActivityList(id)); });
   };
 }
 
