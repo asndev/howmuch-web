@@ -21,7 +21,7 @@ class Index extends React.Component {
     render() {
       return (<div>
         <Panel>
-          <h1>hello</h1>
+          <h3>hello</h3>
         </Panel>
         <ul className='mui-list--unstyled'>
         {
