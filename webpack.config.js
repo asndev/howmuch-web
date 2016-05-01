@@ -29,7 +29,7 @@ const entry = (env) => {
   if (env === DEV_ENV) {
     result.push('webpack-hot-middleware/client');
   }
-  result.push('./index');
+  result.push('./src/index');
 
   return result;
 };
