@@ -1,9 +1,9 @@
 import path from 'path';
 import webpack from 'webpack';
 
-export const DEV_ENV = 'development';
-export const PROD_ENV = 'production';
-export const TEST_ENV = 'testing';
+export const DEV_ENV = 'dev';
+export const PROD_ENV = 'prod';
+export const TEST_ENV = 'test';
 
 // We generate a webpack config for each environment
 
