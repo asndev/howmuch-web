@@ -31,7 +31,9 @@
     "redux": "^3.2.1",
     "redux-logger": "^2.4.0",
     "redux-thunk": "^1.0.3",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.0",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.9.1"
   },
   "devDependencies": {
     "babel-core": "^6.3.15",
@@ -48,8 +50,6 @@
     "node-sass": "^3.4.2",
     "redbox-react": "^1.2.2",
     "sass-loader": "^3.2.0",
-    "style-loader": "^0.13.0",
-    "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.9.1"
+    "style-loader": "^0.13.0"
   }
 }
