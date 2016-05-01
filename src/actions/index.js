@@ -6,9 +6,13 @@ export const SOME_ACTION = 'SOME_ACTION';
 export const DO_LOGIN = 'DO_LOGIN';
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN';
 
+export const CREATE_ACTIVITYLIST = 'CREATE_ACTIVITYLIST';
 export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
 export const RECEIVE_ATIVITY_LISTS = 'RECEIVE_ATIVITY_LISTS';
 export const RECEIVE_ACTIVITIES = 'RECEIVE_ACTIVITIES';
+
+// TODO use apisauce
+const apiUrl = 'http://howmuch-api.herokuapp.com/v1';
 
 function receiveActivities(payload) {
   return {
@@ -24,7 +28,7 @@ export function fetchActivityList(id) {
       console.warn('No User');
       return;
     }
-    return fetch(`http://howmuch-api.herokuapp.com/v1/activitylist/${id}/activity`, {
+    return fetch(`${apiUrl}/activitylist/${id}/activity`, {
       headers: {
         'authorization': user.token
       }
@@ -42,13 +46,34 @@ export function createActivity(id) {
       return;
     }
 
-    return fetch(`http://howmuch-api.herokuapp.com/v1/activitylist/${id}/activity`, {
+    return fetch(`${apiUrl}/${id}/activity`, {
       headers: {
         'authorization': user.token
       },
       method: 'POST'
     })
     .then(() => { dispatch(fetchActivityList(id)); });
+  };
+}
+
+export function createActivityList(name) {
+  return (dispatch, getState) => {
+    const user = getState().settings.user;
+    if (!user) {
+      console.warn('No User');
+      return;
+    }
+
+    return fetch(`${apiUrl}/activitylist`, {
+      headers: {
+        'authorization': user.token
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        name
+      })
+    })
+    .then(() => dispatch(fetchActivityLists()));
   };
 }
 
@@ -66,7 +91,7 @@ export function fetchActivityLists() {
       console.warn('No User');
       return;
     }
-    return fetch('http://howmuch-api.herokuapp.com/v1/activitylist', {
+    return fetch(`${apiUrl}/activitylist`, {
       headers: {
         'authorization': user.token
       }

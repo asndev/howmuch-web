@@ -11,7 +11,7 @@ const testState = {
   }
 };
 
-const settings =(state = testState, action) => {
+const settings =(state = settingsInitialState, action) => {
   switch (action.type) {
     case RECEIVE_LOGIN:
       if (action.payload.success) {

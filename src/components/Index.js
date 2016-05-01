@@ -21,7 +21,12 @@ class Index extends React.Component {
     render() {
       return (<div>
         <Panel>
-          <h3>hello</h3>
+          <Button
+            onClick={() => browserHistory.push('/createlist')}
+            variant="raised"
+            color="primary">
+            Create Activity List
+          </Button>
         </Panel>
         <ul className='mui-list--unstyled'>
         {

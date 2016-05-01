@@ -32,6 +32,12 @@ class ActivityListContainer extends React.Component {
               color="danger">
               Create Activity
             </Button>
+            <Button
+              onClick={() => this.context.router.goBack()}
+              variant="raised"
+              color="dark">
+              Back
+            </Button>
           </div>
           <div>Activities<br/>
             <strong>{activities.details.activityCount}</strong>
@@ -49,6 +55,10 @@ ActivityListContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   activitylists: PropTypes.object.isRequired,
   params: PropTypes.object.isRequired
+};
+
+ActivityListContainer.contextTypes = {
+  router: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
