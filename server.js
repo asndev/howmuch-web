@@ -3,7 +3,8 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 import configBuilder, { DEV_ENV } from './webpack.config';
 
-const env = process.env.NODE_ENV || DEV_ENV;
+//const env = process.env.NODE_ENV || DEV_ENV;
+const env = DEV_ENV;
 
 const app = new (require('express'))();
 const port = process.env.PORT || 3000;
