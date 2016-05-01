@@ -6,7 +6,7 @@ import configBuilder, { DEV_ENV } from './webpack.config';
 const env = process.env.NODE_ENV || DEV_ENV;
 
 const app = new (require('express'))();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const config = configBuilder(DEV_ENV);
 
 const compiler = webpack(config);
