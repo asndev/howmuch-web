@@ -24,6 +24,7 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ],
+  context: path.resolve(__dirname, ''),
   resolve: {
     root: [
       __dirname,
