@@ -25,7 +25,7 @@ module.exports = {
       'process.env.BABEL_ENV': JSON.stringify('production')
     })
   ],
-  context: path.resolve(__dirname, ''),
+  context: path.resolve(__dirname, './src'),
   resolve: {
     root: [
       __dirname,
