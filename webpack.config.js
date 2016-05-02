@@ -1,8 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
 
-export const DEV_ENV = 'dev';
-export const PROD_ENV = 'prod';
+export const DEV_ENV = 'development';
+export const PROD_ENV = 'production';
 export const TEST_ENV = 'test';
 
 // We generate a webpack config for each environment
@@ -61,7 +61,7 @@ function getConfig(env) {
     output: {
       path: path.join(__dirname, 'dist'),
       filename: 'bundle.js',
-      publicPath: '/static/'
+      publicPath: '/dist'
     },
     plugins: plugins(env),
     context: path.join(__dirname, 'src'),
