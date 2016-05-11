@@ -1,5 +1,5 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   devtool: 'source-map',
@@ -33,14 +33,14 @@ module.exports = {
     loaders: [
       { test: /\.js?$/,
         loader: 'babel',
-        include: path.join(__dirname, 'src') },
+      include: path.join(__dirname, 'src') },
       { test: /\.scss?$/,
         loader: 'style!css!sass',
-        include: path.join(__dirname, 'src', 'styles') },
+      include: path.join(__dirname, 'src', 'styles') },
       { test: /\.png$/,
-        loader: 'file' },
+      loader: 'file' },
       { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file'}
+      loader: 'file'}
     ]
   }
-};
+}
