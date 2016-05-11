@@ -8,6 +8,7 @@ class App extends React.Component {
   render () {
     const { user } = this.props.settings
     const content = user ? this.props.children : <LoginForm />
+    const title = user ? `Hello ${user.name}` : 'please log in'
 
     return (
       <div>
@@ -15,7 +16,7 @@ class App extends React.Component {
         <Grid>
           <Row>
             <Col xs={12}>
-              <h2>Container</h2>
+              <h2>{title}</h2>
             </Col>
           </Row>
           <Row>
