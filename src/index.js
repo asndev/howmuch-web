@@ -1,7 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Root from './root'
+import { Router, browserHistory } from 'react-router'
+
+import routes from './routes'
 
 import './styles/_global.scss'
 
-render(<Root />, document.getElementById('root'))
+render(
+  <Router history={browserHistory} routes={routes} />,
+  document.getElementById('root')
+)
