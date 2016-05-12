@@ -9,7 +9,7 @@ export const RECEIVE_ATIVITY_LISTS = 'RECEIVE_ATIVITY_LISTS'
 export const RECEIVE_ACTIVITIES = 'RECEIVE_ACTIVITIES'
 
 // TODO use apisauce
-const apiUrl = 'http://howmuch-api.herokuapp.com/v1'
+const apiUrl = 'https://howmuch-api.herokuapp.com/v1'
 
 function receiveLogin (payload) {
   return {
@@ -20,7 +20,7 @@ function receiveLogin (payload) {
 
 export function doLogin (email, password) {
   return dispatch => {
-    return fetch('http://howmuch-api.herokuapp.com/signin', {
+    return fetch('https://howmuch-api.herokuapp.com/signin', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
