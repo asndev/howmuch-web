@@ -17,6 +17,7 @@
     "parser": "babel-eslint"
   },
   "dependencies": {
+    "babel": "^6.5.2",
     "express": "^4.13.4",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.0.2",
@@ -30,7 +31,6 @@
     "webpack": "^1.12.2"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
     "babel-cli": "^6.6.5",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.0.1",
