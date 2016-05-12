@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "node_modules/.bin/webpack --config ./webpack.prod.config.js --progress --colors",
-    "postinstall": "node_modules/.bin/webpack --config ./webpack.prod.config.js --progress --colors",
+    "postinstall": "NODE_ENV=production node_modules/.bin/webpack --config ./webpack.prod.config.js --progress --colors",
     "start": "node ./app.js",
     "test": "standard",
     "prod": "NODE_ENV=production npm run build && npm start",
