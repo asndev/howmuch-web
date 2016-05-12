@@ -68,7 +68,7 @@ export function createActivity (id) {
       return
     }
 
-    return fetch(`${apiUrl}/${id}/activity`, {
+    return fetch(`${apiUrl}/activitylist/${id}/activity`, {
       headers: {
         'authorization': user.token
       },
