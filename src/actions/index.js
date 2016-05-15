@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 export const DO_LOGIN = 'DO_LOGIN'
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
+export const RECEIVE_SIGNOUT = 'RECEIVE_SIGNOUT'
 
 export const CREATE_ACTIVITYLIST = 'CREATE_ACTIVITYLIST'
 export const CREATE_ACTIVITY = 'CREATE_ACTIVITY'
@@ -9,7 +10,8 @@ export const RECEIVE_ATIVITY_LISTS = 'RECEIVE_ATIVITY_LISTS'
 export const RECEIVE_ACTIVITIES = 'RECEIVE_ACTIVITIES'
 
 // TODO use apisauce
-const apiUrl = 'https://howmuch-api.herokuapp.com/v1'
+// const apiUrl = 'https://howmuch-api.herokuapp.com/v1'
+const apiUrl = 'http://localhost:3030/v1'
 
 function receiveLogin (payload) {
   return {
@@ -18,9 +20,13 @@ function receiveLogin (payload) {
   }
 }
 
+export function signOut () {
+  return { type: RECEIVE_SIGNOUT }
+}
+
 export function doLogin (email, password) {
   return dispatch => {
-    return fetch('https://howmuch-api.herokuapp.com/signin', {
+    return fetch('http://localhost:3030/signin', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -48,6 +54,7 @@ export function fetchActivityList (id) {
     const user = getState().settings.user
     if (!user) {
       console.warn('No User')
+      dispatch(signOut())
       return
     }
     return fetch(`${apiUrl}/activitylist/${id}/activity`, {
@@ -56,7 +63,13 @@ export function fetchActivityList (id) {
       }
     })
     .then(response => response.json())
-    .then(json => dispatch(receiveActivities({ _id: id, ...json })))
+    .then(json => {
+      if (json.success) {
+        dispatch(receiveActivities({ _id: id, ...json }))
+      } else {
+        dispatch(signOut())
+      }
+    })
   }
 }
 
@@ -65,6 +78,7 @@ export function createActivity (id) {
     const user = getState().settings.user
     if (!user) {
       console.warn('No User')
+      dispatch(signOut())
       return
     }
 
@@ -83,6 +97,7 @@ export function createActivityList (name) {
     const user = getState().settings.user
     if (!user) {
       console.warn('No User')
+      dispatch(signOut())
       return
     }
 
@@ -111,6 +126,7 @@ export function fetchActivityLists () {
     const user = getState().settings.user
     if (!user) {
       console.warn('No User')
+      dispatch(signOut())
       return
     }
     return fetch(`${apiUrl}/activitylist`, {
@@ -119,6 +135,12 @@ export function fetchActivityLists () {
       }
     })
     .then(response => response.json())
-    .then(json => dispatch(receiveActivityLists(json)))
+    .then(json => {
+      if (json.success) {
+        dispatch(receiveActivityLists(json))
+      } else {
+        dispatch(signOut())
+      }
+    })
   }
 }

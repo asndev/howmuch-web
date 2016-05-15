@@ -8,7 +8,7 @@ class App extends React.Component {
   render () {
     const { user } = this.props.settings
     const content = user ? this.props.children : <LoginForm />
-    const title = user ? `Hello ${user.name}` : 'please log in'
+    const title = user ? `Hello ${user.email}` : 'please log in'
 
     return (
       <div>

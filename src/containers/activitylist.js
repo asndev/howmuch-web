@@ -52,11 +52,11 @@ class ActivityList extends React.Component {
           Create Activity
         </Button>
         <h3>{this.state.title}</h3>
-        <div>Activities<br />
-          <strong>{activities.details.activityCount}</strong>
-        </div>
-        <div>Average<br />
-          <strong>{activities.details.averagePerDay}</strong>
+        <div>
+          Activities:
+          <strong> {activities.details.activityCount} </strong>
+          Average:
+          <strong> {activities.details.averagePerDay}</strong>
         </div>
       </div>
     )

@@ -1,4 +1,4 @@
-import { RECEIVE_LOGIN } from '../actions'
+import { RECEIVE_LOGIN, RECEIVE_SIGNOUT } from '../actions'
 
 const settingsInitialState = {
   // The user is set via the Reducer after a successful login
@@ -18,11 +18,17 @@ const settings = (state = settingsInitialState, action) => {
         return {
           ...state,
           user: {
-            token: action.payload.token
+            token: action.payload.token,
+            email: action.payload.user
           }
         }
       }
       return state
+    case RECEIVE_SIGNOUT:
+      return {
+        ...state,
+        user: null
+      }
     default:
       return state
   }
