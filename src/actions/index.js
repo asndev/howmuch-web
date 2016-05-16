@@ -8,6 +8,7 @@ export const CREATE_ACTIVITYLIST = 'CREATE_ACTIVITYLIST'
 export const CREATE_ACTIVITY = 'CREATE_ACTIVITY'
 export const RECEIVE_ATIVITY_LISTS = 'RECEIVE_ATIVITY_LISTS'
 export const RECEIVE_ACTIVITIES = 'RECEIVE_ACTIVITIES'
+export const DELETE_ACTIVITYLIST = 'DELETE_ACTIVITYLIST'
 
 // TODO use apisauce
 // const apiUrl = 'https://howmuch-api.herokuapp.com/v1'
@@ -89,6 +90,30 @@ export function createActivity (id) {
       method: 'POST'
     })
     .then(() => { dispatch(fetchActivityList(id)) })
+  }
+}
+
+export function deleteActivtyList (id) {
+  return (dispatch, getState) => {
+    const user = getState().settings.user
+    if (!user) {
+      console.warn('No user')
+      dispatch(signOut())
+      return
+    }
+
+    return fetch(`${apiUrl}/activitylist/${id}`, {
+      headers: {
+        'authorization': user.token
+      },
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(json => {
+      if (!json.success) {
+        dispatch(signOut())
+      }
+    })
   }
 }
 

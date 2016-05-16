@@ -14,7 +14,10 @@ class Dashboard extends React.Component {
   render () {
     return (
       <div>
-        <Button>Create new list</Button>
+        <Button
+          onClick={() => { browserHistory.push('/activitylist/new') }}>
+          Create new list
+        </Button>
         <h3>your lists</h3>
         <ListGroup>
           {

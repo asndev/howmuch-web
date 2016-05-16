@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'react-bootstrap'
 
-import { fetchActivityList, createActivity } from '../actions'
+import { fetchActivityList, createActivity, deleteActivtyList } from '../actions'
 
 class ActivityList extends React.Component {
   constructor (props) {
@@ -34,6 +34,11 @@ class ActivityList extends React.Component {
     this.props.dispatch(createActivity(this.props.params.listid))
   }
 
+  deleteList () {
+    this.props.dispatch(deleteActivtyList(this.props.params.listid))
+    this.context.router.goBack()
+  }
+
   render () {
     const activities =
       this.props.activitylists.activities[this.props.params.listid] || {}
@@ -50,6 +55,10 @@ class ActivityList extends React.Component {
         <Button
           onClick={this.createActivity.bind(this)}>
           Create Activity
+        </Button>
+        <Button
+          onClick={this.deleteList.bind(this)}>
+          Delete List
         </Button>
         <h3>{this.state.title}</h3>
         <div>
