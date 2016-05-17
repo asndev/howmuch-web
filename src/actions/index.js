@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import Settings from '../config/settings'
 
 export const DO_LOGIN = 'DO_LOGIN'
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
@@ -11,8 +12,8 @@ export const RECEIVE_ACTIVITIES = 'RECEIVE_ACTIVITIES'
 export const DELETE_ACTIVITYLIST = 'DELETE_ACTIVITYLIST'
 
 // TODO use apisauce
-const apiUrl = 'https://howmuch-api.herokuapp.com/v1'
-// const apiUrl = 'http://localhost:3030/v1'
+const { apiUrl } = Settings
+const api = `${apiUrl}/v1`
 
 function receiveLogin (payload) {
   return {
@@ -27,7 +28,7 @@ export function signOut () {
 
 export function doLogin (email, password) {
   return dispatch => {
-    return fetch('http://localhost:3030/signin', {
+    return fetch(`${apiUrl}/signin`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -58,7 +59,7 @@ export function fetchActivityList (id) {
       dispatch(signOut())
       return
     }
-    return fetch(`${apiUrl}/activitylist/${id}/activity`, {
+    return fetch(`${api}/activitylist/${id}/activity`, {
       headers: {
         'authorization': user.token
       }
@@ -83,7 +84,7 @@ export function createActivity (id) {
       return
     }
 
-    return fetch(`${apiUrl}/activitylist/${id}/activity`, {
+    return fetch(`${api}/activitylist/${id}/activity`, {
       headers: {
         'authorization': user.token
       },
@@ -102,7 +103,7 @@ export function deleteActivtyList (id) {
       return
     }
 
-    return fetch(`${apiUrl}/activitylist/${id}`, {
+    return fetch(`${api}/activitylist/${id}`, {
       headers: {
         'authorization': user.token
       },
@@ -126,7 +127,7 @@ export function createActivityList (name) {
       return
     }
 
-    return fetch(`${apiUrl}/activitylist`, {
+    return fetch(`${api}/activitylist`, {
       headers: {
         'authorization': user.token
       },
@@ -154,7 +155,7 @@ export function fetchActivityLists () {
       dispatch(signOut())
       return
     }
-    return fetch(`${apiUrl}/activitylist`, {
+    return fetch(`${api}/activitylist`, {
       headers: {
         'authorization': user.token
       }
