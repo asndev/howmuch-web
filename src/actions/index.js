@@ -11,8 +11,8 @@ export const RECEIVE_ACTIVITIES = 'RECEIVE_ACTIVITIES'
 export const DELETE_ACTIVITYLIST = 'DELETE_ACTIVITYLIST'
 
 // TODO use apisauce
-// const apiUrl = 'https://howmuch-api.herokuapp.com/v1'
-const apiUrl = 'http://localhost:3030/v1'
+const apiUrl = 'https://howmuch-api.herokuapp.com/v1'
+//const apiUrl = 'http://localhost:3030/v1'
 
 function receiveLogin (payload) {
   return {
