@@ -42,7 +42,6 @@ class LoginForm extends React.Component {
         <form>
           <FormGroup
             controlId='loginform'
-            validationState={this.validate()}
           >
             <FormControl
               type='text'

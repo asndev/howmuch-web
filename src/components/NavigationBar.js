@@ -1,12 +1,24 @@
 import React from 'react'
 import { Nav, Navbar, NavItem } from 'react-bootstrap'
 
-const NavigationBar = () => {
+const NavigationBar = (props) => {
+  const email = props.user ? props.user.email : null
+  const title = email ? `hello ${email}` : 'howmuch'
+
+  let signout = ''
+  if (props.user) {
+    signout = (
+      <NavItem eventKey={1} onClick={props.signout}>
+        logout
+      </NavItem>
+    )
+  }
+
   return (
-    <Navbar inverse>
+    <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href='/'>howmuch</a>
+          <a href='/'>{title}</a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
@@ -20,9 +32,7 @@ const NavigationBar = () => {
           </NavItem>
         </Nav>
         <Nav pullRight>
-          <NavItem eventKey={1} href='#'>
-            username
-          </NavItem>
+          {signout}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

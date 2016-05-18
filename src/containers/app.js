@@ -3,20 +3,23 @@ import { connect } from 'react-redux'
 import LoginForm from '../components/LoginForm'
 import NavigationBar from '../components/NavigationBar'
 import { Grid, Row, Col } from 'react-bootstrap'
+import { signOut } from '../actions'
 
 class App extends React.Component {
   render () {
     const { user } = this.props.settings
     const content = user ? this.props.children : <LoginForm />
-    const title = user ? `Hello ${user.email}` : 'please log in'
 
     return (
       <div>
-        <NavigationBar />
+        <NavigationBar
+          user={user}
+          signout={() => { this.props.dispatch(signOut()) }}
+          />
         <Grid>
           <Row>
             <Col xs={12}>
-              <h2>{title}</h2>
+              {/* what could go here? */}
             </Col>
           </Row>
           <Row>
