@@ -4,6 +4,9 @@ const SETTINGS = {
   },
   production: {
     apiUrl: 'https://howmuch-api.herokuapp.com'
+  },
+  testing: {
+    apiUrl: 'https://howmuch-api.herokuapp.com'
   }
 }
 
